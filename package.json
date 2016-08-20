@@ -8,7 +8,7 @@
     "npm": "3.7.3"
   },
   "scripts": {
-    "start": "gulp connect"
+    "start": "gulp serve"
   },
   "devDependencies": {
     "bower": "^1.7.9",
