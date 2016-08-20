@@ -10,7 +10,7 @@
  	"scripts": {
  		"start": "gulp",
  		"test": "gulp test",
- 		"postinstall": "bower install --config.interactive=false"
+ 		"postinstall": "bower cache clean && bower install"
  	},
 "devDependencies": {
   "connect": "^2.14.4",
