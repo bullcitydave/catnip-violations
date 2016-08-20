@@ -1,7 +1,17 @@
   {
   "private": true,
   "engines": {
-  "node": ">=0.10.0"
+      "node": ">=0.10.0"
+      "npm": "3.7.3"
+  },
+  "name": "purring-tickets",
+  "description": "F",
+  "version": "0.0.1",
+  "author": "Dave Seidman",
+  "scripts": {
+		"start": "gulp",
+		"test": "gulp test",
+		"postinstall": "bower install --config.interactive=false"
   },
 "devDependencies": {
   "connect": "^2.14.4",
