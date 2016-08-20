@@ -68,7 +68,7 @@ gulp.task('connect', function () {
     .use(connect.directory('app'));
 
   require('http').createServer(app)
-    .listen(9000)
+    .listen(process.env.PORT || 9000)
     .on('listening', function () {
       console.log('Started connect web server on http://localhost:9000');
     });
