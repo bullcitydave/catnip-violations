@@ -8,8 +8,11 @@
     "npm": "3.7.3"
   },
   "scripts": {
-    "start": "gulp connect"
+    "start": "gulp"
   },
+  "dependencies": {
+     "gulp": "^3.6.0"
+  }
   "devDependencies": {
     "bower": "^1.7.9",
     "connect": "^2.14.4",
