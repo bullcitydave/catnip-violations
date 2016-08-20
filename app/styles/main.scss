@@ -1,0 +1,744 @@
+// Colors
+$error : red;
+$black : #232d2f;
+$white: #fff;
+$lightgray : #e2e2e2;
+$darkgray: #868686; // #7d7d7d;
+$cream: #ebbaa1;
+
+$body-background: $cream;
+$wrapper-background: $lightgray;
+$content-background: #fff;
+$content-text: $black;
+$theme-color1: #d87548;
+
+
+// Fonts
+@import url(http://fonts.googleapis.com/css?family=Raleway:900,500,200);
+$header-font: "Raleway", Helvetica, Arial, sans-serif;
+$primary-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+// Font Sizes
+$tiny: 0.8em;
+
+// Breakpoints
+$content-max: 1200px;
+$tablet: 728px;
+$desktop: 960px;
+
+//Mixins
+
+@mixin default-nav-link {
+  display: inline;
+  text-decoration: none;
+  width: auto;
+}
+
+@mixin default-border {
+  border: 1px solid $lightgray;
+  border-radius: 5px;
+}
+
+@mixin align-right {
+  text-align: right;
+}
+
+// override column spans specified in styling for an element
+@mixin neat-ignore {
+  width: inherit;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@mixin widget-header-text {
+    color: $theme-color1;
+    font-family: $header-font;
+    font-size: 1.8em;
+    font-weight: normal;
+    display: inline-block;
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+
+// button icon placement, right or left
+@mixin icon($dir) {
+  @if $dir == right {
+    &::before {
+      float: right;
+    }
+  }
+  @if $dir == left {
+    &::before {
+      float: left;
+    }
+  }
+}
+
+
+
+ // Bourbon & Neat
+@import '../../bower_components/bourbon/app/assets/stylesheets/bourbon';
+@import '../../bower_components/neat/app/assets/stylesheets/neat';
+@import 'refills';
+@import 'receipt';
+@import 'payments';
+@import 'search';
+@import 'transactiontable';
+
+
+// Images
+$background-image: url(/);
+
+
+
+
+
+
+
+@mixin center {
+  text-align: center;
+}
+
+
+// Custom Styles
+body {
+  background: $body-background;
+  .main-wrapper {
+    @include outer-container;
+    margin: 0 auto;
+    background: $wrapper-background;
+    font-family: $primary-font;
+    color: $content-text;
+    padding: 0;
+    @include media($tablet) {
+      padding: 0 15px 15px 15px;
+    }
+    @include media($desktop) {
+      padding: 0 25px 25px 25px;
+      max-width: $content-max;
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header.navigation {
+  @include outer-container;
+  background: $wrapper-background;
+  margin-left: 0;
+  margin-right: 0;
+  .logo-container {
+    @include span-columns(10 of 12);
+    img.logo {
+      @include size(120px 50px);
+      margin: 0;
+      background: transparent;
+    }
+  }
+  button {
+    @include media($tablet) {
+      display: none;
+    }
+    @include span-columns(2 of 12);
+    @include omega;
+  }
+}
+
+section.hero-unit {
+  display: none;
+  @include outer-container;
+  background: transparent;
+  padding: 0;
+  .title {
+    @include span-columns(12);
+    margin-top: 30px;
+    h1 {
+      float: left;
+      font-family: $header-font;
+      font-size: 3.0em;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin: 0;
+      position: relative;
+      &.light {
+        font-weight: 200;
+      }
+      .pre {
+        position: absolute;
+        top: -.75em;
+        left: 0;
+        font-size: 0.5em;
+        font-weight: 400;
+      }
+      @include media($desktop) {
+        font-size: 4.0em;
+      }
+    }
+  }
+  p {
+    clear: left;
+  }
+  @include media($tablet) {
+    display: block;
+  }
+}
+
+
+section header, .modal-inner header {
+  padding: 10px 0px;
+  .header-glyph {
+    font-size: 2.2em;
+    display: inline-block;
+    float: left;
+    color: $darkgray;
+    padding-right: 10px;
+  }
+  .header-content {
+    float: left;
+    width: calc(100% - 50px);
+    .main-message {
+      p {
+        @include widget-header-text;
+      }
+    }
+    .instructions {
+      clear: left;
+      color: $darkgray;
+      padding-top: 10px;
+      font-size: 1.2em;
+    }
+    .button-group {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+section.main-content {
+
+  background: $content-background;
+  padding: 0 1.0em 75px;
+  @include clearfix;
+  @include media($tablet) {
+    padding-left: 2.0em;
+    padding-right: 2.0em;
+  }
+
+  .receipt & {
+    padding-bottom: 0;
+  }
+  //TODO bottom padding not ideal; tabs styling/JS making this necessary
+  // took off the 75px bottom padding for complete form; restyling the index anyway, will need to fix;
+
+
+  .body-text {
+    margin: 0;
+    padding: 0 10px 0;
+    clear: left;
+  }
+
+  nav {
+    float: none;
+    line-height: 1.2em;
+
+    // @include media($tablet) {
+      float: left;
+    // }
+  }
+
+  ul.navigation-menu {
+    clear: both;
+    display: none;
+    margin: 0 auto 20px;
+    overflow: visible;
+    padding: 0;
+    width: 100%;
+
+    // @include media($tablet)  {
+      display: block;
+
+      padding: 0;
+    // }
+
+    &.show {
+      display: block;
+    }
+  }
+
+  // Nav items
+  ul li.nav-link {
+    display: block;
+    text-align: right;
+    width: 100%;
+
+    // @include media($tablet)  {
+      @include default-nav-link;
+      &:not(:last-child):after {
+        content: "|";
+        color: $black;
+        font-size: 0.6em;
+        position: relative;
+        bottom: 0.2em;
+      // }
+    }
+  }
+
+  li.nav-link a {
+    display: inline-block;
+    color: $theme-color1;
+    font-size: 0.9em;
+    transition: 0.1s color linear;
+    &:hover {
+      color: $black;
+    }
+
+    // @include media($tablet)  {
+      padding-right: 0.8em;
+      padding-left: 0.8em;
+    // }
+  }
+}
+
+
+
+
+
+// FORMS
+fieldset {
+  @include outer-container;
+  clear: left;
+  border: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  header {
+    width: 100%;
+    font-weight: bold;
+    float: left;
+    .additional-text {
+      font-weight:normal;
+    }
+  }
+  .field {
+    border: 2px solid $wrapper-background;
+    padding: 0 0 0 12px;
+    border-radius: 5px;
+    display: table;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    label {
+      display: table-cell;
+      font-size: 0.8em;
+      font-weight: bold;
+      color: $darkgray;
+      vertical-align: middle;
+      // @include media($tablet) {
+      //   display: table-cell;
+      // }
+      &.full {
+        display:block;
+      }
+      &.full-m {
+        display:block;
+        @include media($tablet) {
+          display: table-cell;
+        }
+      }
+    }
+    input, select {
+      border: none;
+      outline: none;
+      display: table-cell;
+      font-size: 1.6em;
+      padding: .4em;
+      @include media($tablet) {
+        font-size: 1.8em;
+      }
+      font-weight: 200;
+      width: 100%;
+      &:focus {
+        // background-color: lighten($lightgray, 5%);
+        outline:1px solid $darkgray;
+        box-shadow: 0 0 1px 1px $darkgray;
+      }
+      // &.empty {
+      //   font-size: 0.8em;
+      //   font-weight: bold;
+      // }
+    }
+    select {
+      margin: 0.25em 0 .5em;
+      background: white;
+      &.abbreviate {
+        white-space: pre;
+        @include media($tablet) {
+          white-space: nowrap;
+        }
+      }
+    }
+    &.error {
+      color: $theme-color1;
+      border-color: $theme-color1;
+      @include placeholder {
+        color: $theme-color1;
+      }
+      label {
+        color: $theme-color1;
+      }
+      input, select {
+        // &:focus {
+        //   background-color: lighten($lightgray, 15%);
+        // }
+      }
+      span {
+        color: $theme-color1;
+        font-weight: bold;
+        font-size: 0.9em;
+        position: absolute;
+        top: calc(100% + 2px);
+        left: 15px;
+      }
+    }
+    &.required {
+      padding-left: 10px;
+      label::before {
+        content: '*';
+      }
+    }
+  }
+}
+
+button {
+  @include button(flat, $lightgray);
+  color: $black;
+  font-weight: normal;
+  font-size: 0.8em;
+  padding: 12px 18px;
+  text-transform: uppercase;
+  font-family: $header-font;
+  clear: left;
+  float: none;
+  margin-top: 20px;
+  @include media($tablet) {
+    margin-top: 0;
+    width: auto;
+    font-size: 1.0em;
+  }
+  span {
+    vertical-align: middle;
+    padding-left: 5px;
+    position: relative;
+    top: 2px;
+    @include media($tablet) {
+      top: 5px;
+      padding-left: 10px;
+    }
+  }
+  &:hover:not(:disabled) {
+    background: darken($lightgray, 10%);
+    color: black;
+    @include transition(0.2s ease);
+  }
+  &::before {
+    font-size: 1.6em;
+    color: $black;
+    @include media($tablet) {
+      font-size: 2.0em;
+    }
+  }
+  &.icon-left {
+    @include icon("left");
+  }
+  &.icon-right {
+    @include icon("right");
+  }
+  &.centered {
+    display: block;
+    margin: 20px auto 0;
+  }
+  &.small {
+    font-size: 0.7em;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-left: 0;
+    span {
+      top: -0.4em;
+      padding: 0;
+    }
+    &:before {
+      font-size: 1.4em;
+      @include media($tablet) {
+        font-size: 1.5em;
+      }
+    }
+    @include media($tablet) {
+      font-size: 0.8em;
+    }
+  }
+
+  // this styling for emphasis; submit, confirm, etc.
+  &.action {
+    background: $theme-color1;
+    color: white;
+    &::before {
+      color: white;
+    }
+    font-weight: normal;
+    @include transition(0.2s ease);
+    &:hover:not(:disabled)  {
+      background: darken($theme-color1, 10%);
+      @include transition(0.2s ease);
+      color: white;
+    }
+  }
+
+  &.single {
+    width: 100%;
+    @include media($tablet) {
+      width: initial;
+      float: right;
+    }
+  }
+}
+
+
+
+
+    nav.standard {
+      float: none;
+
+      @include media($tablet) {
+        float: left;
+      }
+
+
+    ul.navigation-menu {
+      clear: both;
+      display: none;
+      margin: 0 auto;
+      overflow: visible;
+      padding: 0;
+      width: 100%;
+
+      @include media($tablet)  {
+        display: block;
+        margin: 0;
+        padding: 0;
+      }
+
+      &.show {
+        display: block;
+      }
+    }
+
+    // Nav items
+    ul li.nav-link {
+      display: block;
+      text-align: right;
+      width: 100%;
+
+      @include media($tablet)  {
+        @include default-nav-link;
+        &:not(:last-child):after {
+          content: "|";
+          color: $black;
+          font-size: 0.6em;
+          position: relative;
+          bottom: 0.2em;
+        }
+      }
+    }
+
+    li.nav-link a {
+      display: inline-block;
+      text-decoration: none;
+      color: $theme-color1;
+      font-size: 0.9em;
+      transition: 0.1s color linear;
+      &:hover {
+        color: $black;
+      }
+
+      @include media($tablet)  {
+        padding-right: 0.8em;
+        padding-left: 0.8em;
+      }
+    }
+}
+
+  //FOOTER
+    footer.main {
+      display: none;
+      text-align: center;
+      padding-top: 15px;
+      clear: left;
+      nav {
+        @extend nav.standard;
+        float: none;
+      }
+      p {
+        clear: left;
+      }
+      .logo-container {
+        img {
+          @include size(117px 45px);
+          filter: grayscale(100%);
+          -webkit-filter: grayscale(100%);
+          opacity: 0.5;
+        }
+      }
+      @include media($tablet) {
+        display: block;
+      }
+    }
+
+
+// MISCELLANY
+
+.validation-error {
+  color: $error;
+}
+
+//TODO fix this...doesn't work in refills.scss
+
+.accordion-tabs {
+  @include media($tablet) {
+    text-align: right;
+  }
+}
+
+
+// NEAT GRID CLASSES
+// Need different loops for each media point; otherwise CSS output places tablet, desktop rules ahead of mobile
+// (i.e. span-t-6 will be overwritten by span-12)
+
+
+// @for $i from 0 to $grid-columns {
+//   .span-#{$i+1} {
+//     @include span-columns(($i+1) of $grid-columns);
+//   }
+// }
+
+@function isOdd($number) {
+
+    @if ($number % 2 == 0) {
+        @return false;
+    }
+    @else {
+
+
+    @return true;
+    }
+
+}
+
+@for $i from 0 to ($grid-columns * 2) {
+  @if isOdd($i)  {
+    .span-#{($i+1)/2} {
+      @include span-columns((($i+1)/2) of $grid-columns);
+    }
+  }
+  @else {
+    .span-#{($i/2)}-half {
+      @include span-columns((($i/2)+0.5) of $grid-columns);
+    }
+  }
+}
+
+
+@for $i from 0 to $grid-columns {
+  @if isOdd($i)  {
+    .span-t-#{($i+1)/2} {
+      @include media($tablet) {
+        @include span-columns((($i+1)/2) of $grid-columns);
+      }
+    }
+  }
+  @else {
+    .span-t-#{($i/2)}-half {
+      @include media($tablet) {
+        @include span-columns((($i/2)+0.5) of $grid-columns);
+      }
+    }
+  }
+}
+
+
+@for $i from 0 to $grid-columns {
+  @if isOdd($i)  {
+    .span-d-#{($i+1)/2} {
+      @include media($desktop) {
+        @include span-columns((($i+1)/2) of $grid-columns);
+      }
+    }
+  }
+  @else {
+    .span-d-#{($i/2)}-half {
+      @include media($desktop) {
+        @include span-columns((($i/2)+0.5) of $grid-columns);
+      }
+    }
+  }
+}
+// @include media($tablet) {
+//   @for $i from 1 to $grid-columns {
+//     .span-#{$i+1} {
+//       @include reset-display;
+//     }
+//   }
+// }
+
+
+
+
+
+// http://www.joshfry.me/blog/2013/05/13/omega-reset-for-bourbon-neat
+// Use to negate omega from earlier media query
+// ** might not need this after all
+// @mixin omega-reset($nth) {
+//   &:nth-child(#{$nth}) { margin-right: flex-gutter(); }
+//   &:nth-child(#{$nth}+1) { clear: none }
+// }
+
+.omega {
+  @include omega;
+  // @include media($tablet) {
+  //   @include omega-reset(1n);
+  // }
+}
+.omega-t {
+  @include media($tablet) {
+    @include omega;
+  }
+}
+.omega-d {
+  @include media($desktop) {
+    @include omega;
+  }
+}
+
+
+// Glyph transformations (won't need once more accurate icons are created)
+
+.fontastic-tag::before {
+  @include transform(scaleX(-1));
+}
+
+
+// Standard styling classes
+
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}

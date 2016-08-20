@@ -1,0 +1,58 @@
+.main-wrapper.search   .main-content {
+  @include outer-container;
+  .button-group {
+    @include media($tablet) {
+      display: none;
+    }
+  }
+  .form {
+    // @include row(table);   couldn't get this to work; ideally styling as table would allow for consistent vert alignment
+    // @include fill-parent();
+  }
+  fieldset {
+    &[id=violation] {
+      display: block;
+      &.show {
+        @include span-columns(12);
+      }
+      &.hide {
+        display: none;
+      }
+      @include media($tablet) {
+        @include span-columns(5.5);
+        @include outer-container;
+      }
+    }
+    &[id=plate] {
+      display: none;
+      &.show {
+        @include span-columns(12);
+      }
+      @include media($tablet) {
+        display: block;
+        @include span-columns(5.5);
+        @include outer-container;
+      }
+      clear:none;
+    }
+  }
+  div.divider {
+    display: none;
+    @include media($tablet) {
+      display: block;
+      @include span-columns(1);
+      @include omega;
+      position: relative;
+      height: 250px; // arbitrary, hack solution used since table display not working
+      margin-top: 25px;
+      &::after {
+        content:"";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        border-left: 2px solid $darkgray;
+      }
+    }
+  }
+}

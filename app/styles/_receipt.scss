@@ -1,0 +1,68 @@
+// RECEIPT
+
+.main-wrapper.receipt {
+  section.receipt-head {
+    background: $white;
+    padding-left: 50px;
+  }
+  section.main-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    header .header-content {
+      @include outer-container;
+      .main-message {
+        @include media($tablet) {
+          @include span-columns(7);
+        }
+        @include media($desktop) {
+          @include span-columns(8);
+        }
+      }
+      .button-container {
+        display: none;
+        @include media($tablet) {
+          @include span-columns(5);
+          @include omega;
+        }
+        @include media($desktop) {
+          @include span-columns(4);
+          @include omega;
+        }
+      }
+    }
+
+
+    .payment-method-summary {
+      text-align: center;
+      font-size: 0.8em;
+      text-transform: capitalize;
+      @include outer-container;
+      .method {
+        .label {
+          font-weight: bold;
+        }
+      }
+      .card-info {
+        margin: 0;
+        span {
+          &:nth-child(2):after {
+            font-weight: bold;
+            content: '\A';
+            white-space: pre-wrap;
+          }
+        }
+      }
+      //TODO Ideally, want to center card info so 2nd line left-aligned with 1st and block centered based on 1st line. Seems the exact width of first line would be needed
+      //   .card-info { width: 168px; margin: 0 auto; text-align: left; }
+    }
+    .barcode-container {
+      margin:15px auto;
+    }
+
+    .disclaimer {
+      font-size: $tiny;
+      padding: 0 20px 10px;
+    }
+
+  }
+}

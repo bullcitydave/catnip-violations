@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Purring Tickets</title>
+
+    <!-- Glyphs / Icons -->
+    <link href="styles/fontastic.css" rel="stylesheet">
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
+    <!-- endbower --
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body >
+
+
+  <div class="main-wrapper search">
+
+    <!-- BEGIN HEADER -->
+      <header id="nav-header" class="navigation" role="banner">
+        <div id="template-header"  class="navigation-wrapper">
+          <a href="javascript:void(0)" class="logo">
+            <img src="http://thecatapi.com/api/images/get?format=src&type=gif">
+          </a>
+          <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+            <span class="fontastic-mobile-menu"></span>
+          </a>
+          <nav role="navigation">
+            <ul id="js-navigation-menu" class="navigation-menu show">
+              <li class="nav-link"><a href="javascript:void(0)">Frequently Asked Questions</a></li>
+              <li class="nav-link"><a href="javascript:void(0)">Terms of Use</a></li>
+              <li class="nav-link"><a href="javascript:void(0)">Privacy Policy</a></li>
+              <li class="nav-link"><a href="javascript:void(0)">Terms &amp; Conditions</a></li>
+              <li class="nav-link"><a href="javascript:void(0)">Contact Us</a></li>
+            </ul>
+          </nav>
+
+          <section class="hero-unit">
+            <div class="title">
+              <h1>
+                tickets
+                <span class="pre">
+                  purring
+                </span>
+              </h1>
+              <h1 class="light">&nbsp;&amp;&nbsp;</h1>
+              <h1>
+                violations
+                <span class="pre">
+                  catnip
+                </span>
+              </h1>
+            </div>
+          </section>
+        </div>
+      </header>
+    <!-- END HEADER -->
+
+      <section class="main-content">
+        <header>
+          <div class="header-glyph">
+            <span class="fontastic-search-find"></span>
+          </div>
+          <div class="header-content">
+            <div class="main-message">
+              <p>Search</p>
+            </div>
+          </div>
+        </header>
+
+        <div class="button-group">
+          <label checked for="search-by-violation">
+            <input checked type="radio" id="search-by-violation" name="button-group" value="violation">
+            <span class="button-group-item">Search By Violation</span>
+          </label>
+          <label for="search-by-plate">
+            <input type="radio" id="search-by-plate" name="button-group" value="plate">
+            <span class="button-group-item">Search By Plate</span>
+          </label>
+        </div>
+        <div class="form">
+
+          <form action="payment.html">
+            <fieldset id="violation">
+
+              <div class="field  span-12" style="display:table">
+                <label for="">VIOLATION #</label>
+                <input style="display:table-cell" type="text" id="first-name"/>
+              </div>
+              <div class="body-text">
+                <p><strong>To see a sample violation, click below</strong> (a new window will open):</p>
+                <nav role="navigation">
+                  <ul id="js-navigation-menu" class="navigation-menu show">
+                    <li class="nav-link"><a href="javascript:void(0)">Purring Ticket</a></li>
+                    <li class="nav-link"><a href="javascript:void(0)">Red Light Violation</a></li>
+                    <li class="nav-link"><a href="javascript:void(0)">Bus Lane Catnip Violation</a></li>
+                    <li class="nav-link"><a href="javascript:void(0)">Speed Catnip Violation</a></li>
+                  </ul>
+                </nav>
+              </div>
+              <button class="action single icon-right fontastic-angle-right"><span>Next</span></a>
+
+
+            </fieldset>
+            <div class="divider">&nbsp;
+            </div>
+            <fieldset id="plate">
+
+              <div class="field  span-12" style="display:table">
+                <label for="">PLATE</label>
+                <input style="display:table-cell" type="text" id="first-name"/>
+              </div>
+              <div class="field  span-12 span-d-6" style="display:table">
+                <label for="">STATE</label>
+                <select style="display:table-cell" class="abbreviate" id="state">
+                    <option value=""></option><option data-full="AB - Alberta" value="AB">AB - Alberta</option><option value="AK">AK - Alaska</option><option value="AL">AL - Alabama</option><option value="AR">AR - Arkansas</option><option value="AZ">AZ - Arizona</option><option value="BC">BC - British Columbia</option><option value="CA">CA - California</option><option value="CO">CO - Colorado</option><option value="CT">CT - Connecticut</option><option value="DC">DC - Washington DC</option><option value="DE">DE - Delaware</option><option value="DP">DP - US State Department</option><option value="FL">FL - Florida</option><option value="FO">FO - Foreign</option><option value="GA">GA - Georgia</option><option value="GV">GV - US Government</option><option value="HI">HI - Hawaii</option><option value="IA">IA - Iowa</option><option value="ID">ID - Idaho</option><option value="IL">IL - Illinois</option><option value="IN">IN - Indiana</option><option value="KS">KS - Kansas</option><option value="KY">KY - Kentucky</option><option value="LA">LA - Louisiana</option><option value="MA">MA - Massachusetts</option><option value="MB">MB - Manitoba</option><option value="MD">MD - Maryland</option><option value="ME">ME - Maine</option><option value="MI">MI - Michigan</option><option value="MN">MN - Minnesota</option><option value="MO">MO - Missouri</option><option value="MS">MS - Mississippi</option><option value="MT">MT - Montana</option><option value="MX">MX - Mexico</option><option value="NB">NB - New Brunswick</option><option value="NC">NC - North Carolina</option><option value="ND">ND - North Dakota</option><option value="NE">NE - Nebraska</option><option value="NF">NF - Newfoundland</option><option value="NH">NH - New Hampshire</option><option value="NJ">NJ - New Jersey</option><option value="NM">NM - New Mexico</option><option value="NS">NS - Nova Scotia</option><option value="NT">NT - Northwest Territories</option><option value="NV">NV - Nevada</option><option value="NY">NY - New York</option><option value="OH">OH - Ohio</option><option value="OK">OK - Oklahoma</option><option value="ON">ON - Ontario</option><option value="OR">OR - Oregon</option><option value="PA">PA - Pennsylvania</option><option value="PE">PE - Prince Edward Island</option><option value="QB">QB - Quebec</option><option value="RI">RI - Rhode Island</option><option value="SC">SC - South Carolina</option><option value="SD">SD - South Dakota</option><option value="SK">SK - Saskatchewan</option><option value="TN">TN - Tennessee</option><option value="TX">TX - Texas</option><option value="UT">UT - Utah</option><option value="VA">VA - Virginia</option><option value="VT">VT - Vermont</option><option value="WA">WA - Washington</option><option value="WI">WI - Wisconsin</option><option value="WV">WV - West Virginia</option><option value="WY">WY - Wyoming</option><option value="YT">YT - Yukon Territory</option>
+                    </select>
+
+              </div>
+              <div class="field  span-12 span-d-6 omega-t" style="display:table">
+                <label for="">PLATE TYPE</label>
+                <select style="display:table-cell" class="abbreviate" id="plate-type">
+                    <option value="" selected="true"></option><option value="CAT">CAT - Cat</option>
+                    <option value="DOG">DOG - Dog</option>
+                </select>
+              </div>
+              <button class="action single icon-right fontastic-angle-right"><span>Next</span></button>
+            </fieldset>
+          </form>
+
+        </div>
+
+
+        <div class="body-text">
+          Note: if you owe more than 250 violations, you may not be able to view all of your tickets on this site. To view all tickets, visit a Finance Business Center.
+        </div>
+
+
+      </section>
+
+      <!-- BEGIN FOOTER -->
+      <footer class="main">
+        <div id="template-nav-footer">
+          <nav role="navigation">
+              <ul id="js-navigation-menu" class="navigation-menu show">
+                <li class="nav-link"><a href="javascript:void(0)">Frequently Asked Questions</a></li>
+                <li class="nav-link"><a href="javascript:void(0)">Terms of Use</a></li>
+                <li class="nav-link"><a href="javascript:void(0)">Privacy Policy</a></li>
+                <li class="nav-link"><a href="javascript:void(0)">Terms &amp; Conditions</a></li>
+                <li class="nav-link"><a href="javascript:void(0)">Contact Us</a></li>
+
+              </ul>
+          </nav>
+          <p>Department of Felines</p>
+          <div class="logo-container">
+            <img src="http://thecatapi.com/api/images/get?format=src&type=gif">
+            <p>Powered by Cat</p>
+          </div>
+        </div>
+      </footer>
+      <!-- END FOOTER -->
+
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js scripts/main.js -->
+        <script src="scripts/main.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

@@ -1,0 +1,359 @@
+// Button group
+
+.button-group {
+  $base-border-color: gainsboro !default;
+  $base-border-radius: 5px !default;
+  $base-line-height: 1.5em !default;
+  $base-spacing: 1.5em !default;
+  $base-font-size: 1em !default;
+  $base-background-color: white !default;
+  $action-color:  $lightgray !default;
+  $base-link-color: $action-color !default;
+  $dark-gray: #333 !default;
+  // $large-screen: em(960) !default;  // use $desktop from main.scss
+  $base-font-color: $darkgray !default;
+  $button-group-background: $base-background-color;
+  $button-group-color: lighten($base-font-color, 0%);
+  $button-group-border: 1px solid white;
+  $button-group-inner-border: 1px solid white;
+  $button-group-background-checked: $action-color;
+  $button-group-color-checked: $black;
+  $button-group-border-checked: white;
+
+  @include clearfix;
+
+  clear: both;
+  input {
+    display: none;
+  }
+
+  label {
+    margin-bottom: 0;
+    float: left;
+
+    .button-group-item {
+      background: $button-group-background;
+      border-left: $button-group-border;
+      border-radius: $base-border-radius;
+      border-right: $button-group-border;
+      color: $button-group-color;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 0.8em; // +
+      font-weight: normal;
+      line-height: 1;
+      padding: 0.75em 0.75em;
+      width: 100%;
+
+      @include media($tablet) {
+        border-bottom: $button-group-border;
+        border-left: 0;
+        border-right: $button-group-inner-border;
+        border-top: $button-group-border;
+        width: auto;
+        font-size: $base-font-size;
+        padding: 0.75em 1.0em;
+      }
+
+      &:focus,
+      &:hover {
+        // background-color: darken($button-group-background, 3%);
+        // +
+        &:hover {
+          background: darken($lightgray, 10%);
+          color: black;
+          @include transition(0.2s ease);
+        }
+      }
+    }
+
+    input:checked + .button-group-item {
+      background: $button-group-background-checked;
+      // border: 1px solid $button-group-border-checked;
+      box-shadow: none;
+      color: $button-group-color-checked;
+    }
+
+  }
+}
+
+
+
+
+// Top Navigation
+
+.navigation {
+  nav {
+    @include media($tablet) {
+      display: none;
+    }
+    ul.navigation-menu {
+      padding: 0 10px;
+      li a {
+        color: $theme-color1;
+      }
+
+    }
+  }
+  // Mobile view
+  .navigation-menu-button {
+    display: block;
+    float: right;
+    margin: 0;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 2.0em;
+    color: $darkgray;
+    text-decoration: none;
+
+    @include media ($tablet) {
+      display: none;
+    }
+  }
+
+  // Nav menu
+  .navigation-wrapper {
+    @include clearfix;
+    text-align: center;
+    position: relative;
+    background: transparent;
+    @include media ($tablet) {
+      text-align: left;
+    }
+  }
+
+  .logo {
+    background: $lightgray;
+    @include media ($tablet) {
+      float: left;
+    }
+
+    img {
+      max-height: 3em;
+      background: transparent;
+      margin: 0;
+      @include media ($tablet) {
+        margin: 10px -10px 0;  // margin will change based on padding embedded in final image file
+      }
+    }
+  }
+
+  nav {
+    float: none;
+
+    @include media ($tablet) {
+      float: right;
+      margin: 2.0em 1.0em 1.5em 1.5em;
+    }
+  }
+
+  ul.navigation-menu {
+    clear: both;
+    display: none;
+    margin: 0 auto;
+    overflow: visible;
+    padding: 0;
+    width: 100%;
+
+    @include media ($tablet) {
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+
+    &.show {
+      display: block;
+    }
+  }
+
+  // Nav items
+  ul li.nav-link {
+    display: block;
+    text-align: right;
+    width: 100%;
+
+    @include media ($tablet) {
+      @include default-nav-link;
+    }
+  }
+
+  li.nav-link a {
+    display: inline-block;
+    text-decoration: none;
+    color: darkgray;
+    font-size: 0.9em;
+    transition: 0.1s color linear;
+    &:hover {
+      color: $black;
+    }
+
+    @include media ($tablet) {
+      padding-right: 2em;
+    }
+  }
+}
+
+
+
+// REFILLS MODAL
+// Based on code by Kasper Mikiewicz
+
+.modal {
+  $base-border-color: gainsboro !default;
+  $base-border-radius: 3px !default;
+  $base-background-color: white !default;
+  $base-font-size: 1em !default;
+  $base-line-height: 1.5em !default;
+  $action-color: #477DCA !default;
+  $dark-gray: #333 !default;
+  $light-gray: #DDD !default;
+  // $medium-screen: em(640) !default;
+  // $large-screen: em(860) !default;
+  $base-font-color: $dark-gray !default;
+  $modal-padding: 3em;
+  $modal-background: $base-background-color;
+  $modal-close-color: $light-gray;
+  $modal-image-height: 135px;
+  $modal-image-width: $modal-image-height;
+  $modal-trigger-image-width: 300px;
+
+  label {
+    cursor: pointer;
+    margin-bottom: 0;
+  }
+
+  label img {
+    border-radius: $modal-trigger-image-width / 2;
+    display: block;
+    max-width: $modal-trigger-image-width;
+  }
+
+  .modal-state {
+    display: none;
+  }
+
+  // .modal-trigger {
+  //   @include button(flat, $action-color);
+  //   padding: 0.8em 1em;
+  // }
+
+  .modal-fade-screen { // overlay
+    @include transition(opacity 0.25s ease);
+    @include position(fixed, 0px 0px 0px 0px);
+    background: rgba(0,0,0, 0.85);
+    opacity: 0;
+    padding-top: 0.6em;
+    text-align: left;
+    visibility: hidden;
+    z-index: 99999999999;
+
+    @include media($desktop) {
+      // padding-top: 10em;
+    }
+
+    .modal-bg {
+      @include position(absolute, 0px 0px 0px 0px);
+      cursor: pointer;
+    }
+  }
+
+  .modal-close:not(button) {
+    @include position(absolute, ($modal-padding /2) ($modal-padding /2) null null);
+    @include size(1.5em);
+    background: $modal-background;
+    cursor: pointer;
+
+    &:after,
+    &:before {
+      @include position(absolute, 3px 3px 0 50%);
+      @include transform(rotate(45deg));
+      @include size(0.15em 1.5em);
+      background: $modal-close-color;
+      content: '';
+      display: block;
+      margin: -3px 0 0 -1px;
+    }
+
+    &:hover:after,
+    &:hover:before {
+      background: darken($modal-close-color, 10%);
+    }
+
+    &:before {
+      @include transform(rotate(-45deg));
+    }
+  }
+
+  .modal-inner {
+    @include transition(opacity 0.25s ease);
+    background: $modal-background;
+    border-radius: $base-border-radius;
+    margin-top: 0;
+    margin: auto;
+    max-height: 95%;
+    overflow: auto;
+    padding: $modal-padding / 2;
+    position: relative;
+    width: 95%;
+
+    @include media($tablet) {
+      max-height: 80%;
+      padding: $modal-padding;
+      width: 80%;
+      margin-top: 50px;
+    }
+
+    @include media($desktop) {
+      width: 70%;
+    }
+
+    h1 {
+      color: $base-font-color;
+      margin-bottom: 0 0 0.6em 0;
+      text-align: left;
+      text-transform: capitalize;
+    }
+
+    p {
+      color: $base-font-color;
+      line-height: $base-line-height;
+    }
+
+    .modal-intro {
+      font-weight: 800;
+    }
+
+    .modal-content {
+      color: $base-font-color;
+      clear: left; // +
+      @include media($tablet) {
+        // @include columns(2 8em);
+      }
+    }
+
+    a.cta {
+      color: white;
+      display: inline-block;
+      margin-right: 0.5em;
+      margin-top: 1em;
+
+      &:last-child {
+        padding: 0 2em;
+      }
+    }
+  }
+
+  .modal-state:checked + .modal-fade-screen {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-state:checked + .modal-fade-screen .modal-inner {
+    top: 0.5em;
+  }
+}
+
+.modal-open {
+  overflow: hidden;
+}

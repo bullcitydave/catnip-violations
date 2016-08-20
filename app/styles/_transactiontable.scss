@@ -1,0 +1,84 @@
+// used for both receipt transactions and payment side transactions-table
+// since these may actually be two distinct objects, using this one class might not be the best implementation
+// (see .payments class, @mixin transactions-expanded,  in _payments.scss)
+
+.transactions-table {
+  @include default-border;
+  clear: left;
+  .row {
+    @include outer-container;
+    padding: 0 10px;
+    border-bottom: 1px solid $lightgray;
+    font-size: 0.9em;
+    max-width: initial;
+    &:first-child {
+      border-radius: 5px 5px 0 0;
+    }
+    &:last-child {
+      border-bottom: 0;
+      padding-bottom: 10px;
+    }
+    .label, .title, .subtitle {
+      @include span-columns(8);
+    }
+    .title {
+      font-weight: bold;
+    }
+    &.additional-line-item .title {
+      font-weight: normal;
+    }
+    .amount {
+      @include span-columns(4);
+      @include align-right;
+      @include omega;
+    }
+    .details {
+      p {
+        clear: left;
+        font-size: $tiny;
+        margin: 0;
+        &:last-child {
+          margin-bottom: 10px;
+        }
+        .label {
+          @include neat-ignore;
+          clear: left;
+          text-transform: uppercase;
+          color: $darkgray;
+          font-weight: bold;
+          padding-right: 1px;
+          // TODO need better way to make sure longest possible string fits on one line
+        }
+        .value {
+          width: inherit;
+        }
+      }
+    }
+    &.total-header {
+      font-size: 1.2em;
+      background: $black;
+      .label {
+        color: $lightgray;
+      }
+      .amount {
+        color: $white;
+      }
+    }
+    &.total-footer {
+      text-transform: capitalize;
+      p {
+        font-weight: bold;
+        margin-bottom: 0;
+      }
+      date {
+        padding-bottom: 10px;
+      }
+    }
+  }
+  .row + div > .row {
+    border-bottom: 0;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
