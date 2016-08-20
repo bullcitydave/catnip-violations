@@ -9,8 +9,7 @@
   },
   "scripts": {
     "start": "gulp",
-    "test": "gulp test",
-    "postinstall": "bower cache clean && bower install"
+    "test": "gulp test"
   },
   "devDependencies": {
     "bower": "^1.7.9",
